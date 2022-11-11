@@ -14,6 +14,6 @@ jobs:
       - setup_remote_docker:
           version: 20.10.14
       - run:
-            command: docker build -t retr-0/docker-react -f ./dockerfile.dev
+            command: docker build -t retr-0/docker-react -f dockerfile.dev
       - run:
             command: docker run -e CI=true retr-0/docker-react npm run test
