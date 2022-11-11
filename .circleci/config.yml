@@ -1,9 +1,15 @@
-language: generic 
-sudo: required
-services:
-  - docker
+version: 2.1
 
-run:
-  - docker build -t RETR-0/docker-react -f dockerfile.dev .
-run:
-  - docker run -e CI=true RETR-0/docker-react npm run test
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
+jobs:
+  build:
+      docker:
+        - image: cimg/node:17.2.0
+      steps:
+        - run:
+            command: docker build -t RETR-0/docker-react -f dockerfile.dev .
+                     docker run -e CI=true RETR-0/docker-react npm run test
