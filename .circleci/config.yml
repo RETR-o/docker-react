@@ -11,6 +11,6 @@ jobs:
         - image: cimg/node:17.2.0
       steps:
         - run:
-            command: docker build -t retr-0/docker-react 
+            command: docker build -t retr-0/docker-react -f dockerfile.dev
         - run:
             command: docker run -e CI=true retr-0/docker-react npm run test
