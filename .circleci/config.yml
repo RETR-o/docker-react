@@ -7,10 +7,12 @@ workflows:
       - build
 jobs:
   build:
-      docker:
-        - image: cimg/node:17.2.0
-      steps:
-        - run:
+    docker:
+      - image: cimg/base:2022.06
+    steps:
+      - setup_remote_docker:
+          version: 20.10.14
+      - run:
             command: docker build -t retr-0/docker-react -f dockerfile.dev
-        - run:
+      - run:
             command: docker run -e CI=true retr-0/docker-react npm run test
