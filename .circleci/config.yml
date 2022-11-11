@@ -12,4 +12,5 @@ jobs:
       steps:
         - run:
             command: docker build -t retr-0/docker-react -f dockerfile.dev .
-                     docker run -e CI=true retr-0/docker-react npm run test
+        - run:
+            command: docker run -e CI=true retr-0/docker-react npm run test
